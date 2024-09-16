@@ -46,7 +46,7 @@ export default function Header() {
           />
         </div>
         <button
-          className="w-full bg-cyan-500 text-white py-2 rounded-md text-lg"
+          className="w-full bg-cyan-500 text-white py-2 rounded-md text-xl border-2 border-cyan-500 hover:bg-white hover:text-cyan-500"
           onClick={handleAddTask}
         >
           Add New Task
