@@ -32,8 +32,27 @@ export function TasksProvider({ children }) {
     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
   }
 
+  function deleteDoneTasks() {
+    const updatedTasks = tasks.filter(task => !task.completed);
+    setTasks(updatedTasks);
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+  }
+
+  function deleteAllTasks() {
+    setTasks([]);
+    localStorage.removeItem('tasks');
+  }
+
+  function updateTask(index, newText) {
+    const updatedTasks = tasks.map((task, i) =>
+      i === index ? { ...task, text: newText } : task
+    );
+    setTasks(updatedTasks);
+    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+  }
+
   return (
-    <TasksContext.Provider value={{ tasks, addTask, toggleTaskCompletion, deleteTask }}>
+    <TasksContext.Provider value={{ tasks, addTask, toggleTaskCompletion, deleteTask, deleteDoneTasks, deleteAllTasks, updateTask }}>
       {children}
     </TasksContext.Provider>
   );

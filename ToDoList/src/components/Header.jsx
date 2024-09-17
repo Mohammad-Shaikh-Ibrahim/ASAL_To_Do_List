@@ -1,13 +1,14 @@
 import { useState, useRef, useContext } from 'react';
 import { TasksContext } from './TasksContext.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBook } from '@fortawesome/free-solid-svg-icons';
+import { faBook} from '@fortawesome/free-solid-svg-icons';
 import { faCircleCheck } from '@fortawesome/free-regular-svg-icons';
 
 export default function Header() {
   const [inputValue, setInputValue] = useState('');
-  const { addTask } = useContext(TasksContext); // Use context
+  const { addTask } = useContext(TasksContext);
   const dialogRef = useRef(null);
+
 
   function handleInputChange(e) {
     const { value } = e.target;
@@ -32,7 +33,7 @@ export default function Header() {
   }
 
   return (
-    <header className="mx-6 font-serif">
+    <header className="mx-6 font-serif relative">
       <h1 className="text-center text-5xl my-12">To-Do Input</h1>
       <div className="rounded-md border-slate-500 border-2 mx-16 p-4">
         <div className="flex items-center mb-4 border-slate-300 border-2 rounded-md">
@@ -58,6 +59,7 @@ export default function Header() {
           Task Added Successfully!
         </p>
       </dialog>
+
     </header>
   );
 }
